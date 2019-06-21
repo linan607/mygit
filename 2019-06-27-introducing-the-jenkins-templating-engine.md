@@ -28,7 +28,7 @@ poster: "./2019-06-27-introducing-the-jenkins-templating-engine/JTE.jpg"
 
 虽然开发团队之间的工具可能不同，但工作流通常是相同的：单元测试、静态代码分析、构建和发布工件、部署工件，然后针对部署的应用程序执行不同类型的测试。
 
- > 模板引擎插件允许您从每个被团队定义可继承通用工作流的存储库中删除 Jenkinsfile 。作为替代每个存储库定义整个管道，团队提供一个使用工作流的工具配置文件。</font>
+    > 模板引擎插件允许您从每个被团队定义可继承通用工作流的存储库中删除 Jenkinsfile 。作为替代每个存储库定义整个管道，团队提供一个使用工作流的工具配置文件。
 
 
 ## 操作 JTE
@@ -41,7 +41,7 @@ poster: "./2019-06-27-introducing-the-jenkins-templating-engine/JTE.jpg"
       ```
 模板利用库提供的步骤来概述必须实现的工作流团队。虽然模板的执行方式与任何其他 `JenkinsFile` 都一样（这意味着支持标准的脚本化和声明性语法），但模板的目标应该是以纯英语的方式阅读，并避免任何技术实现。
 
- > 通过这种方式利用模板，您可以将管道的业务逻辑（应该在什么时候发生）与技术实现（实际将要发生什么）分开。其结果是一个 CI/CD 管道，当同时支持多个团队时，该管道被证明非常容易管理。
+    > 通过这种方式利用模板，您可以将管道的业务逻辑（应该在什么时候发生）与技术实现（实际将要发生什么）分开。其结果是一个 CI/CD 管道，当同时支持多个团队时，该管道被证明非常容易管理。
 
 此模板（ `unit_test` 、 `build` 和 `static_code_analysis` ）概述的步骤是专门命名的。通过这种方式，团队可以使用的不同库共享同一管道。
 
@@ -61,7 +61,7 @@ poster: "./2019-06-27-introducing-the-jenkins-templating-engine/JTE.jpg"
 2.	库资源清单
 3.	层的配置文件( `pipeline_config.groovy` )
 
- > 管理层的管道模板和配置文件存储在管道配置存储库中。}$
+    > 管理层的管道模板和配置文件存储在管道配置存储库中。
 
 在 Jenkins 中配置治理层时，您将为包含上述组件的存储库以及可以找到这些构件的基本目录提供源代码管理位置。
 
@@ -107,7 +107,7 @@ void call(){
 }
 ```
 
- > 读更多关于 [JTE 开发库](https://boozallen.github.io/jenkins-templating-engine/pages/Library_Development/index.html)。
+    > 读更多关于 [JTE 开发库](https://boozallen.github.io/jenkins-templating-engine/pages/Library_Development/index.html)。
 
 ### 5、创建配置文件
 Jte 的配置文件名为 `pipeline_config.groovy` 。
@@ -145,16 +145,16 @@ libraries{
 
 ![governance_tier](governance_tier.png)
 
- > 上图中显示的配置可以在下找到 `Manage Jenkins >> Configure System` 。
+    > 上图中显示的配置可以在下找到 `Manage Jenkins >> Configure System` 。
 
- > 通过模板化引擎，您可以通过 Jenkins 中的文件夹表示此结构，从而创建与组织分类相匹配的管道治理层次结构。
+    > 通过模板化引擎，您可以通过 Jenkins 中的文件夹表示此结构，从而创建与组织分类相匹配的管道治理层次结构。
 
 ### 7、为两个应用程序创建多分支管道
 当为每个应用程序创建多分支管道项目时，模板引擎插件提供一个名为 **Jenkins 模板引擎**的新 `Project Recognizer` 。这会将项目设置为对存储库中的所有分支使用模板化引擎框架。
 
 ![project_recognizer](project_recognizer.png)
 
- > 您还可以为 GitHub 组织项目设置 **Jenkins 模板引擎**项目识别器，使您能够轻松地在整个 GitHub 组织中共享相同的管道！
+    > 您还可以为 GitHub 组织项目设置 **Jenkins 模板引擎**项目识别器，使您能够轻松地在整个 GitHub 组织中共享相同的管道！
 
 ### 8、运行管道
 就这样！现在，这两个应用程序将利用完全相同的管道模板，同时具有选择工作流每个阶段应使用哪些工具的灵活性。
